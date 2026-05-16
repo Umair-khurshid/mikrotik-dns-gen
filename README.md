@@ -14,10 +14,10 @@ A client-side tool that converts a list of domain names into `/ip dns static add
 
 ## Usage
 
-1. **Paste your domain list** in the text area — one domain per line, `#` for comments
-2. **Set the `address-list` name** (required) — e.g., `split-dns`, `vpn-routing`
-3. **Optionally configure `forward-to`** — DNS server IP to forward matching queries to (RouterOS v6+)
-4. **Optionally add a `comment`** — included in every generated entry
+1. **Paste your domain list** in the text area, one domain per line, `#` for comments
+2. **Set the `address-list` name** (required) for example `split-dns`, `vpn-routing`
+3. **Optionally configure `forward-to`**, DNS server IP to forward matching queries to (RouterOS v6+)
+4. **Optionally add a `comment`** included in every generated entry
 5. **Click Generate** (or press `Ctrl+Enter`)
 6. **Copy** the output or **download** it as a `.rsc` file
 
