@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MikroTik DNS Static Config Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+  <header class="header">
+    <div class="header-left">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        <path d="M2 17l10 5 10-5"/>
+        <path d="M2 12l10 5 10-5"/>
+      </svg>
+      <h1>MikroTik DNS Config Generator</h1>
+    </div>
+    <span class="header-badge">RouterOS</span>
+  </header>
+
+  <main class="layout">
+
+    <section class="card" aria-label="Domain input">
+      <div class="card-header">
+        <h2 class="card-title">Domain List</h2>
+        <span class="card-hint">One per line, <code>#</code> for comments</span>
+      </div>
+      <textarea
+        id="domain-input"
+        class="input-area"
+        placeholder="example.com&#10;api.example.com&#10;cdn.example.com&#10;# analytics domains&#10;analytics.example.com&#10;metrics.example.com"
+        rows="10"
+        spellcheck="false"
+        aria-label="Domain list input"
+      ></textarea>
+    </section>
+
+    <section class="card" aria-label="Configuration parameters">
+      <div class="card-header">
+        <h2 class="card-title">Parameters</h2>
+      </div>
+      <div class="params-grid">
+        <div class="field">
+          <label for="addr-list" class="field-label">address-list</label>
+          <input type="text" id="addr-list" class="field-input" placeholder="split-dns" spellcheck="false">
+        </div>
+        <div class="field">
+          <label for="forward-to" class="field-label">forward-to</label>
+          <input type="text" id="forward-to" class="field-input" placeholder="192.168.88.1" spellcheck="false">
+          <span class="field-note">DNS server IP. Requires RouterOS v6+; use <code>regexp</code> matching on older versions.</span>
+        </div>
+        <div class="field">
+          <label for="comment" class="field-label">comment</label>
+          <input type="text" id="comment" class="field-input" placeholder="DNS via VPN tunnel" spellcheck="false">
+        </div>
+      </div>
+    </section>
+
+    <div class="actions-bar">
+      <button id="btn-generate" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 10 4 15 9 20"/>
+          <path d="M20 4v7a4 4 0 0 1-4 4H4"/>
+        </svg>
+        Generate
+      </button>
+    </div>
+
+    <section class="card" aria-label="Generated output">
+      <div class="card-header">
+        <h2 class="card-title">Output</h2>
+        <span id="output-stats" class="card-hint"></span>
+      </div>
+      <pre
+        id="output-display"
+        class="output-area"
+        aria-label="Generated RouterOS commands"
+        aria-live="polite"
+      ><code id="output-code"></code></pre>
+    </section>
+
+    <div class="actions-bar">
+      <button id="btn-copy" class="btn btn-secondary" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        Copy to Clipboard
+      </button>
+      <button id="btn-download" class="btn btn-secondary" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download .rsc
+      </button>
+    </div>
+
+  </main>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <footer class="footer">
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="umairkhurshid" data-color="#40DCA5" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00"></script>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
