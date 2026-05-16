@@ -1,19 +1,16 @@
 # MikroTik DNS Static Config Generator
 
-A client-side tool that converts a list of domain names into `/ip dns static add` commands for MikroTik RouterOS. Paste domains, configure parameters, get copy-paste-ready RouterOS config — no backend, no install.
+A client-side tool that converts a list of domain names into `/ip dns static add` commands for MikroTik RouterOS. Paste domains, configure parameters, get copy-paste-ready RouterOS config.
 
 **[Link:](https://umair-khurshid.github.io/mikrotik-dns-gen/)**
 
 ## Features
 
-- **Client-side only** — runs entirely in the browser, no data leaves your machine
-- **Syntax highlighted output** — domain names, keywords, and comments are color-coded
-- **Bulk processing** — supports wildcards (`*.example.com`), inline comments, and blank lines
-- **Clipboard copy** — one-click copy to paste directly into WinBox terminal or SSH
-- **Download .rsc** — save commands as a `.rsc` file for RouterOS import
-- **Auto-save** — domain list and parameters persist in `localStorage` across sessions
-- **Keyboard shortcut** — `Ctrl+Enter` triggers generate
-- **Dark theme** — OLED-friendly palette, responsive layout
+- 
+- **Syntax highlighted output**: domain names, keywords, and comments are color-coded
+- **Bulk processing**:supports wildcards (`*.example.com`), inline comments, and blank lines
+- **Download .rsc**: save commands as a `.rsc` file for RouterOS import
+- **Auto-save**: domain list and parameters persist in `localStorage` across sessions
 
 ## Usage
 
