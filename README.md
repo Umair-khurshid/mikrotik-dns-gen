@@ -2,7 +2,7 @@
 
 A client-side tool that converts a list of domain names into `/ip dns static add` commands for MikroTik RouterOS. Paste domains, configure parameters, get copy-paste-ready RouterOS config — no backend, no install.
 
-**[Try it live →](https://umairkhurshid.github.io/mikrotik-dns-gen/)**
+**[Link:](https://umair-khurshid.github.io/mikrotik-dns-gen/)**
 
 ## Features
 
