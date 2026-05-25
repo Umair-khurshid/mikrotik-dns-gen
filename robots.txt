@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://umair-khurshid.github.io/mikrotik-dns-gen/sitemap.xml
