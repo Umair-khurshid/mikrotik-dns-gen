@@ -138,7 +138,7 @@ function highlightSyntax(text) {
 
 function loadSettings() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = sessionStorage.getItem(STORAGE_KEY);
     if (!raw) return;
     const saved = JSON.parse(raw);
     state.addressList = saved.addressList || '';
@@ -155,7 +155,7 @@ function loadSettings() {
 
 function saveSettings() {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
       addressList: state.addressList,
       forwardTo: state.forwardTo,
       comment: state.comment,
