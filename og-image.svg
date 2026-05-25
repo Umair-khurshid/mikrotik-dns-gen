@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#40DCA5"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g opacity="0.03" transform="translate(600, 315)">
+    <circle r="350" fill="none" stroke="#40DCA5" stroke-width="2"/>
+    <circle r="250" fill="none" stroke="#40DCA5" stroke-width="2"/>
+    <circle r="150" fill="none" stroke="#40DCA5" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(80, 180)">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#40DCA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+      <path d="M2 17l10 5 10-5"/>
+      <path d="M2 12l10 5 10-5"/>
+    </svg>
+  </g>
+
+  <text x="160" y="225" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="44" font-weight="600" fill="#F1F5F9">
+    MikroTik DNS Config Generator
+  </text>
+
+  <rect x="160" y="245" width="120" height="30" rx="15" fill="#40DCA5" opacity="0.15"/>
+  <text x="163" y="265" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="14" font-weight="500" fill="#40DCA5">RouterOS</text>
+
+  <text x="80" y="360" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22" fill="#94A3B8">
+    Generate /ip dns static add commands from a list of domains
+  </text>
+
+  <line x1="80" y1="400" x2="400" y2="400" stroke="#334155" stroke-width="2"/>
+
+  <text x="80" y="440" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="16" fill="#64748B">
+    Free · Offline-capable · Bulk DNS configuration tool
+  </text>
+
+  <rect x="80" y="470" width="200" height="44" rx="22" fill="url(#accent)"/>
+  <text x="180" y="497" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="16" font-weight="600" fill="#0F172A" text-anchor="middle">
+    Try it free
+  </text>
+
+  <text x="80" y="560" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="14" fill="#475569">
+    mikrotik-dns-gen — network engineers' tool
+  </text>
+</svg>
