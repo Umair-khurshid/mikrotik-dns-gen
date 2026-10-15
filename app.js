@@ -316,9 +316,9 @@ function init() {
     }
   });
 
-  if (state.domains.length > 0 && state.output) {
-    renderOutput();
-  } else if ($('domain-input').value.trim()) {
+  renderOutput();
+
+  if ($('domain-input').value.trim()) {
     onGenerate();
   }
 }
