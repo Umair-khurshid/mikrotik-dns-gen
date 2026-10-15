@@ -6,11 +6,11 @@ A client-side tool that converts a list of domain names into `/ip dns static add
 
 ## Features
 
-- 
+- **Runs entirely in your browser**: no data is sent to a server
 - **Syntax highlighted output**: domain names, keywords, and comments are color-coded
-- **Bulk processing**:supports wildcards (`*.example.com`), inline comments, and blank lines
+- **Bulk processing**: supports wildcards (`*.example.com`), inline comments, and blank lines; duplicates are removed
 - **Download .rsc**: save commands as a `.rsc` file for RouterOS import
-- **Auto-save**: domain list and parameters persist in `localStorage` across sessions
+- **Auto-save**: domain list and parameters persist in `sessionStorage` for the current session
 
 ## Usage
 
