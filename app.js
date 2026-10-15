@@ -65,8 +65,12 @@ function generateCommands(domains, addressList, forwardTo, comment) {
   for (const domain of domains) {
     const parts = [];
     parts.push('/ip dns static');
-    parts.push('add address-list=' + rosQuote(addressList));
-    if (forwardTo) parts.push('forward-to=' + rosQuote(forwardTo));
+    parts.push('add');
+    if (addressList) parts.push('address-list=' + rosQuote(addressList));
+    if (forwardTo) {
+      parts.push('forward-to=' + rosQuote(forwardTo));
+      parts.push('type=FWD');
+    }
     if (comment) parts.push('comment=' + rosQuote(comment));
     parts.push('name=' + rosQuote(domain));
     lines.push(parts.join(' '));
@@ -75,11 +79,12 @@ function generateCommands(domains, addressList, forwardTo, comment) {
   return lines.join('\n');
 }
 
-const FIELD_RE = /(\w+(?:-\w+)*)="((?:[^"\\]|\\.)*)"/g;
+const TOKEN_RE = /(\w+(?:-\w+)*)=(?:"((?:[^"\\]|\\.)*)"|(\S+))/g;
 
 const FIELD_CLASS = {
   'address-list': 'syntax-keyword',
   'forward-to': 'syntax-keyword',
+  'type': 'syntax-keyword',
   'comment': 'syntax-comment',
   'name': 'syntax-domain',
 };
@@ -88,21 +93,18 @@ function buildCommandLine(line) {
   var html =
     '<span class="syntax-keyword">' + escapeHtml('/ip dns static add') + '</span>';
 
-  var matches = [];
+  var tokenRegex = new RegExp(TOKEN_RE.source, 'g');
   var match;
-  var fieldRegex = new RegExp(FIELD_RE.source, 'g');
-  while ((match = fieldRegex.exec(line)) !== null) {
-    matches.push({ key: match[1], rawValue: match[2] });
-  }
-
-  for (var i = 0; i < matches.length; i++) {
-    var key = matches[i].key;
-    var escapedValue = escapeHtml(matches[i].rawValue);
+  while ((match = tokenRegex.exec(line)) !== null) {
+    var key = match[1];
     var cssClass = FIELD_CLASS[key] || '';
-    html += ' ' +
-      '<span class="' + cssClass + '">' +
-      escapeHtml(key) + '=&quot;' + escapedValue + '&quot;' +
-      '</span>';
+    var rendered;
+    if (match[2] !== undefined) {
+      rendered = escapeHtml(key) + '=&quot;' + escapeHtml(match[2]) + '&quot;';
+    } else {
+      rendered = escapeHtml(key) + '=' + escapeHtml(match[3]);
+    }
+    html += ' <span class="' + cssClass + '">' + rendered + '</span>';
   }
 
   return html;
@@ -209,8 +211,8 @@ function onGenerate() {
     return;
   }
 
-  if (!state.addressList) {
-    showToast('address-list is required', true);
+  if (!state.addressList && !state.forwardTo) {
+    showToast('address-list or forward-to is required', true);
     return;
   }
 

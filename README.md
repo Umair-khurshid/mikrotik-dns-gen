@@ -15,8 +15,8 @@ A client-side tool that converts a list of domain names into `/ip dns static add
 ## Usage
 
 1. **Paste your domain list** in the text area, one domain per line, `#` for comments
-2. **Set the `address-list` name** (required) for example `split-dns`, `vpn-routing`
-3. **Optionally configure `forward-to`**, DNS server IP to forward matching queries to (RouterOS v6+)
+2. **Set the `address-list` name** (optional) for example `split-dns`, `vpn-routing`
+3. **Optionally configure `forward-to`**, DNS server IP to forward matching queries to (RouterOS v6+). At least one of `address-list` or `forward-to` is required
 4. **Optionally add a `comment`** included in every generated entry
 5. **Click Generate** (or press `Ctrl+Enter`)
 6. **Copy** the output or **download** it as a `.rsc` file
@@ -37,10 +37,10 @@ internal.example.com
 # Generated: 20260516-143022
 # Domains: 4
 
-/ip dns static add address-list="split-dns" forward-to="10.0.0.1" name="example.com"
-/ip dns static add address-list="split-dns" forward-to="10.0.0.1" name="*.example.com"
-/ip dns static add address-list="split-dns" forward-to="10.0.0.1" name="api.example.com"
-/ip dns static add address-list="split-dns" forward-to="10.0.0.1" name="internal.example.com"
+/ip dns static add address-list="split-dns" forward-to="10.0.0.1" type=FWD name="example.com"
+/ip dns static add address-list="split-dns" forward-to="10.0.0.1" type=FWD name="*.example.com"
+/ip dns static add address-list="split-dns" forward-to="10.0.0.1" type=FWD name="api.example.com"
+/ip dns static add address-list="split-dns" forward-to="10.0.0.1" type=FWD name="internal.example.com"
 ```
 
 
