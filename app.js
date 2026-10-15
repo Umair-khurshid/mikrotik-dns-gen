@@ -260,9 +260,13 @@ async function onCopy() {
     textarea.style.opacity = '0';
     document.body.appendChild(textarea);
     textarea.select();
-    document.execCommand('copy');
+    const copied = document.execCommand('copy');
     document.body.removeChild(textarea);
-    showToast('Copied to clipboard');
+    if (copied) {
+      showToast('Copied to clipboard');
+    } else {
+      showToast('Copy failed', true);
+    }
   }
 }
 
@@ -278,7 +282,7 @@ function onDownload() {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  setTimeout(function () { URL.revokeObjectURL(url); }, 0);
   showToast('Saved as ' + filename);
 }
 
