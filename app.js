@@ -225,6 +225,8 @@ function onGenerate() {
   }
 
   if (!state.addressList && !state.forwardTo) {
+    state.output = '';
+    renderOutput();
     showToast('address-list or forward-to is required', true);
     return;
   }
