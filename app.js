@@ -30,6 +30,7 @@ function $(id) {
 function parseDomainList(raw) {
   const lines = raw.split('\n');
   const valid = [];
+  const seen = new Set();
   const skipped = [];
   for (const line of lines) {
     const stripped = line.trim();
@@ -37,7 +38,11 @@ function parseDomainList(raw) {
     const domain = stripped.split('#')[0].trim();
     if (!domain) continue;
     if (isValidDomain(domain)) {
-      valid.push(domain);
+      const key = domain.toLowerCase();
+      if (!seen.has(key)) {
+        seen.add(key);
+        valid.push(domain);
+      }
     } else {
       skipped.push(domain);
     }
