@@ -96,7 +96,7 @@ const TOKEN_RE = /(\w+(?:-\w+)*)=(?:"((?:[^"\\]|\\.)*)"|(\S+))/g;
 
 const FIELD_CLASS = {
   'address-list': 'syntax-keyword',
-  'forward-to': 'syntax-keyword',
+  'forward-to': 'syntax-ip',
   'type': 'syntax-keyword',
   'comment': 'syntax-comment',
   'name': 'syntax-domain',
@@ -110,7 +110,7 @@ function buildCommandLine(line) {
   var match;
   while ((match = tokenRegex.exec(line)) !== null) {
     var key = match[1];
-    var cssClass = FIELD_CLASS[key] || '';
+    var cssClass = Object.prototype.hasOwnProperty.call(FIELD_CLASS, key) ? FIELD_CLASS[key] : '';
     var rendered;
     if (match[2] !== undefined) {
       rendered = escapeHtml(key) + '=&quot;' + escapeHtml(match[2]) + '&quot;';
@@ -199,7 +199,7 @@ function renderOutput() {
 
   preEl.classList.remove('is-empty');
   codeEl.innerHTML = highlightSyntax(state.output);
-  statsEl.textContent = state.domains.length + ' domains';
+  statsEl.textContent = state.domains.length + (state.domains.length === 1 ? ' domain' : ' domains');
   copyBtn.disabled = false;
   downloadBtn.disabled = false;
 }
