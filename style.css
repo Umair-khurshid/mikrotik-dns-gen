@@ -20,8 +20,8 @@
   --border-light: #334155;
   --radius: 8px;
   --radius-sm: 4px;
-  --font-ui: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+  --font-ui: 'Schibsted Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Spline Sans Mono', ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
 }
 
 html {
@@ -58,6 +58,16 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.01em;
+}
+
+.material-symbols-rounded {
+  font-size: 1.125rem;
+  line-height: 1;
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+.header-left .material-symbols-rounded {
+  font-size: 1.5rem;
 }
 
 .header-badge {
