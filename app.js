@@ -171,9 +171,9 @@ function loadSettings() {
 function saveSettings() {
   try {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
-      addressList: state.addressList,
-      forwardTo: state.forwardTo,
-      comment: state.comment,
+      addressList: $('addr-list').value,
+      forwardTo: $('forward-to').value,
+      comment: $('comment').value,
       domains: state.domains,
       skipped: state.skipped,
       domainText: $('domain-input').value,
