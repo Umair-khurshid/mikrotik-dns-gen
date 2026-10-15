@@ -20,7 +20,15 @@ function escapeHtml(text) {
 }
 
 function isValidDomain(domain) {
-  return /^(?:\*\.)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(domain);
+  if (domain.length > 253) return false;
+  const name = domain.startsWith('*.') ? domain.slice(2) : domain;
+  const labels = name.split('.');
+  if (labels.length < 2) return false;
+  const label = /^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/;
+  for (const part of labels) {
+    if (!label.test(part)) return false;
+  }
+  return /^[a-zA-Z]{2,}$/.test(labels[labels.length - 1]);
 }
 
 function $(id) {
